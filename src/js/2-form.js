@@ -43,7 +43,7 @@ form.addEventListener("input", (event) => {
     if(JSON.parse(localStorage.getItem('feedback-form-state')).email && localStorage.getItem('feedback-form-state').message !== ""){
         form.formElement.email.value = localStorage.parse(getItem('feedback-form-state')).email;
         form.formElement.message.value = localStorage.parse(getItem('feedback-form-state')).message
-    }}
+    }} catch {console.log("error with JSON.parse")};
 });
 
 form.addEventListener("submit", (event) => {
