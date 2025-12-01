@@ -37,12 +37,15 @@ const formData = {
     message: "",
 }
 
+if(localStorage.getItem('feedback-form-state').email && localStorage.getItem('feedback-form-state').message !== ""){
+form.elements.email.value = localStorage.feedback-form-state.email.parse();
+form.elements.message.value = localStorage.feedback-form-state.message.parse();}
+
 const form = document.querySelector("form.feedback-form");
 form.addEventListener("input", (event) => {
     const item = localStorage.getItem('feedback-form-state'); try {
     if(JSON.parse(localStorage.getItem('feedback-form-state')).email && localStorage.getItem('feedback-form-state').message !== ""){
-        form.formElement.email.value = localStorage.parse(getItem('feedback-form-state')).email;
-        form.formElement.message.value = localStorage.parse(getItem('feedback-form-state')).message
+
     }} catch {console.log("error with JSON.parse")};
 });
 
@@ -50,8 +53,8 @@ form.addEventListener("submit", (event) => {
     if(form.email === "" && form.message === ""){
 return alert("Fill please all fields");
     } else {
-    formData.email = trim(form.formElement.email.value);
-    formData.message = trim(form.formElement.message.value);
+    formData.email = form.elements.email.value.trim();
+    formData.message = form.elements.message.value.trim();
     console.log(formData);
     localStorage.setItem("feedback-form-state", JSON.stringify(formData));
     //очистити лок схов, об'єкт, поля форми;
