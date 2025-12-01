@@ -30,7 +30,7 @@ li.innerHTML = `<form class="feedback-form" autocomplete="off">
     <button type="submit">Submit</button>
   </form>
   `;
-document.querySelector('ul.gallery').append(li);
+document.querySelector('ul.gallery').insertAdjacentElement("afterend", li);
 
 const formData = {
     email: "",
