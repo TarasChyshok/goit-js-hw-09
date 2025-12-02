@@ -6,8 +6,8 @@ const formData = {
 
 const form = document.querySelector("form.feedback-form");
 form.addEventListener("input", () => {
-    form.elements.email.value.trim() = formData.email;
-    form.elements.message.value.trim() = formData.message;
+    form.elements.email.value = formData.email.trim();
+    form.elements.message.value = formData.message.trim();
     localStorage.setItem('feedback-form-state', formData.stringify())
 });
 
