@@ -1,4 +1,9 @@
 
+// const textArea = document.querySelector('feedback-form').elements.label.textarea;
+// textArea.addEventListener('active', () => {
+//     textArea.setAttribute('placeholder', 'Type area');
+// })
+
 const formData = {
     email: "",
     message: "",
