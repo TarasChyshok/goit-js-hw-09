@@ -17,29 +17,16 @@
 // Під час сабміту форми, якщо обидва елементи форми заповнені, виводиться у консоль об'єкт з полями email, message та їхніми поточними значеннями, а також очищаються сховище і поля форми
 // Якщо після сабміту форми ввести в будь-який елемент форми дані, то в локальному сховищі не з’являються дані від попереднього сабміта
 
-const li = document.createElement('li');
-li.innerHTML = `<form class="feedback-form" autocomplete="off">
-    <label>
-      Email
-      <input type="email" name="email" autofocus />
-    </label>
-    <label>
-      Message
-      <textarea name="message" rows="8"></textarea>
-    </label>
-    <button type="submit">Submit</button>
-  </form>
-  `;
-document.querySelector('ul.gallery').insertAdjacentElement("afterend", li);
-
 const formData = {
     email: "",
     message: "",
-}
+};
 
-if(localStorage.getItem('feedback-form-state').email && localStorage.getItem('feedback-form-state').message !== ""){
-form.elements.email.value = localStorage.feedback-form-state.email.parse();
-form.elements.message.value = localStorage.feedback-form-state.message.parse();}
+// const feedbackFormState = localStorage.getItem('feedback-form-state').parse();
+
+// if(feedbackFormState.email && feedbackFormState.message !== "" || null){
+// form.elements.email.value = localStorage.feedback-form-state.email.parse().email;
+// form.elements.message.value = localStorage.feedback-form-state.message.parse().message;}
 
 const form = document.querySelector("form.feedback-form");
 form.addEventListener("input", (event) => {
@@ -57,11 +44,13 @@ return alert("Fill please all fields");
     formData.message = form.elements.message.value.trim();
     console.log(formData);
     localStorage.setItem("feedback-form-state", JSON.stringify(formData));
+    console.log(localStorage);
     //очистити лок схов, об'єкт, поля форми;
     form.elements.email.value = "";
     form.elements.message.value = "";
     document.querySelector(".feedback-form").reset;
     localStorage.clear();
+    console.log(localStorage);
     }
 });
 

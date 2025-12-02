@@ -67,7 +67,6 @@ const images = [
       },
     ];
 
-const ul = document.querySelector("ul.gallery");
 
     const liImagesArray = images.map(element => {
                 let li = document.createElement("li");
