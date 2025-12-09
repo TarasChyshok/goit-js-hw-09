@@ -1,25 +1,32 @@
 
-// const textArea = document.querySelector('feedback-form').elements.label.textarea;
-// textArea.addEventListener('active', () => {
-//     textArea.setAttribute('placeholder', 'Type area');
-// })
 
-const formData = {
+let formData = {
     email: "",
     message: "",
 };
 
 const form = document.querySelector("form.feedback-form");
-form.addEventListener("input", () => {
+const getItemFromLocalStorage = localStorage.getItem('feedback-form-state');
+const parsedItemFromLocalStorage = JSON.parse(localStorage.getItem("feedback-form-state"));
+if(getItemFromLocalStorage !== null){
+    formData.email = parsedItemFromLocalStorage.email;
+    formData.message = parsedItemFromLocalStorage.message;
+    console.log(formData);
     form.elements.email.value = formData.email;
     form.elements.message.value = formData.message;
-    formData.email.trim();
-    formData.message.trim()
-    localStorage.setItem('feedback-form-state', formData.stringify())
+}
+
+form.addEventListener("input", () => {
+    formData.email = form.elements.email.value;
+    formData.message = form.elements.message.value;
+    formData.email = formData.email.trim();
+    formData.message = formData.message.trim()
+    localStorage.setItem('feedback-form-state', JSON.stringify(formData));
 });
 
-form.addEventListener("submit", () => {
-    if(form.elements.email.value.trim() === "" && form.elements.message.value.trim() === ""){
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if(form.elements.email.value.trim() === "" || form.elements.message.value.trim() === ""){
 return alert("Fill please all fields");
     } else {
         if(form.elements.email.value.trim() !== "" ){
@@ -28,9 +35,14 @@ return alert("Fill please all fields");
         if(form.elements.message.value.trim() !== ""){
             formData.message = form.elements.message.value.trim();
         }
-    localStorage.setItem("feedback-form-state", formData.stringify());
+    localStorage.setItem("feedback-form-state", JSON.stringify(formData));
+    console.log(localStorage);
     //очистити лок схов, об'єкт, поля форми;
     document.querySelector(".feedback-form").reset();
-    localStorage.removeItem('feedback-from-state');
+    localStorage.removeItem('feedback-form-state');
+    console.log(formData);
+    console.log(localStorage);
+    delete formData.email;
+    delete formData.message;
     }
 });
