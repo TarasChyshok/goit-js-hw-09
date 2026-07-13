@@ -9,5 +9,5 @@ import{S as c}from"./assets/vendor-D0gBiHs0.js";(function(){const i=document.cre
     />
   </a>
 </li>
-        `);l.insertAdjacentHTML("beforeend",r.join());new c(".gallery-link",{captions:!0,captionSelector:"img",captionType:"attr",captionsData:"alt",captionPosition:"bottom",captionDelay:250});
+        `);l.insertAdjacentHTML("beforeend",r.join(""));new c(".gallery-link",{captions:!0,captionSelector:"img",captionType:"attr",captionsData:"alt",captionPosition:"bottom",captionDelay:250});
 //# sourceMappingURL=1-gallery.js.map
