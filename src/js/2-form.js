@@ -3,7 +3,7 @@ const formData = {
   message: '',
 };
 
-const form = document.querySelector('form .feedback-form');
+const form = document.querySelector('form.feedback-form');
 let dataObject;
 if (localStorage.getItem('feedback-form-state') !== null) {
   dataObject = JSON.parse(localStorage.getItem('feedback-form-state'));
@@ -15,7 +15,7 @@ if (localStorage.getItem('feedback-form-state') !== null) {
 }
 
 form.addEventListener('input', e => {
-  formData[e.target.name] = form[e.target.name];
+  formData[e.target.name] = form.elements[e.target.name].value;
   localStorage.setItem('feedback-form-state', JSON.stringify(formData));
 });
 
