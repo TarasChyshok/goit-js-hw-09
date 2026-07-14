@@ -3,7 +3,7 @@ const formData = {
   message: '',
 };
 
-const form = document.querySelector('form.feedback-form');
+const form = document.querySelector('.feedback-form');
 let dataObject;
 if (localStorage.getItem('feedback-form-state') !== null) {
   dataObject = JSON.parse(localStorage.getItem('feedback-form-state'));
