@@ -13,6 +13,7 @@ ul.gallery {
   justify-items: center;
   padding: 0;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, auto);
 }
 
 li {
@@ -20,7 +21,9 @@ li {
   padding: 0;
 }
 li.gallery-item {
-  justify-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex-basis: calc((100% - 3 * 24px) / 3);
 }
 
